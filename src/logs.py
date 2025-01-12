@@ -1,7 +1,7 @@
 from datetime import datetime
 import logging
 
-logging.basicConfig(filename=f"logs/{datetime.now().strftime('%Y-%m-%d')}.log", 
+logging.basicConfig(filename=f"logs/{datetime.now().strftime('%Y-%m-%d')}-{datetime.now().strftime('%H-%M-%S')}.log", 
                     level=logging.INFO,
                     format="%(asctime)s - %(levelname)s - %(message)s")
 

@@ -39,9 +39,8 @@ def transform_brazil_indicators() -> None:
     try:
         for file in files:
             if file.startswith("brazil_indicators") and file.endswith(".txt"):
-                with open(f"{bronze_path}/{file}", "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                data_list = list(data.items())                        
+                df = pd.read_csv(f"{bronze_path}/{file}", sep=',')
+                data_list = df.values.tolist()
                 df = pd.DataFrame(data_list, columns=['Indice', 'Valor'])
                 df.to_csv(f"{silver_path}/{file.replace('.txt', '.csv')}", index=False, sep=';')
                 info_logging(f"Brazil indicators for {file.replace('.txt', '')} was successfully transformed")

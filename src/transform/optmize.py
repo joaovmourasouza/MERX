@@ -14,7 +14,7 @@ def optimized_exchange_rate() -> None:
         for file in files:
             if file.endswith("_rate.csv"):
                 df = pd.read_csv(f"{silver_path}/{file}", sep=';')
-                df.to_parquet(f"{gold_path}/{file}.parquet")
+                df.to_parquet(f"{gold_path}/{file.replace('.csv', '')}.parquet")
                 info_logging(f"Exchange rate for {file.replace('.csv', '')} was successfully optimized, ready to be inserted")
     
     except Exception as e:
@@ -27,7 +27,7 @@ def optimized_credit_balance() -> None:
             if file.startswith("credit_balance"):
                 df = pd.read_csv(f"{silver_path}/{file}", sep=';')
                 df = process_credit_balance(df)
-                df.to_parquet(f"{gold_path}/{file}.parquet")
+                df.to_parquet(f"{gold_path}/{file.replace('.csv', '')}.parquet")
                 info_logging(f"Exchange rate for {file.replace('.csv', '')} was successfully optimized, ready to be inserted")
     
     except Exception as e:
@@ -39,7 +39,7 @@ def optimized_brazil_indicators() -> None:
         for file in files:
             if file.startswith("brazil_indicators"):
                 df = pd.read_csv(f"{silver_path}/{file}", sep=';')
-                df.to_parquet(f"{gold_path}/{file}.parquet")
+                df.to_parquet(f"{gold_path}/{file.replace('.csv', '')}.parquet")
                 info_logging(f"Exchange rate for {file.replace('.csv', '')} was successfully optimized, ready to be inserted")
     
     except Exception as e:
