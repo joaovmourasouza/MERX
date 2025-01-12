@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:latest
+    build:
+      context: .  # Contexto de build para o diretório /home/jvms/MERX
+      dockerfile: ./src/db/Dockerfile  # Caminho para o Dockerfile do PostgreSQL
     container_name: postgres-db
     environment:
       POSTGRES_USER: user
@@ -12,6 +14,16 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - postgres-network
+
+  python-scripts:
+    build:
+      context: .  # Contexto de build para o diretório /home/jvms/MERX
+      dockerfile: ./src/python/Dockerfile  # Caminho para o Dockerfile do script Python
+    container_name: python-scripts
+    depends_on:
+      - db
     networks:
       - postgres-network
 
