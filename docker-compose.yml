@@ -24,7 +24,7 @@ services:
       - AIRFLOW__CORE__EXECUTOR=LocalExecutor
       - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://user:password@db/mydb
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
-      - AIRFLOW__CORE__FERNET_KEY=""
+      - AIRFLOW__CORE__FERNET_KEY=pxL-nscpqJzgJP9arcoKWsB2T9wSzg0dT4-HSohU-lk=
       - AIRFLOW__WEBSERVER__RBAC=True
       - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=False
     volumes:
@@ -37,6 +37,7 @@ services:
       - db
     networks:
       - postgres-network
+    command: ["airflow", "standalone"] 
 
   python-scripts:
     build:
