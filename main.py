@@ -19,25 +19,30 @@ from src.load.check import (check_exchange_rate,
 from src.load.insert import upsert
 
 def main() -> None:
-    '''get_exchange_rate("USD")
+    # DAG de extração
+    get_exchange_rate("USD")
     get_exchange_rate("BRL")
     get_credit_balance_cooperatives()
     get_credit_balance_with_direct_resources()
-    get_brazil_indicators()'''
+    get_brazil_indicators()
 
-    '''trasform_exchange_rate()
+    # DAG de transformação
+    trasform_exchange_rate()
     transform_credit_balance()
     transform_brazil_indicators()
 
+    # DAG de otimização
     optimized_exchange_rate()
     optimized_credit_balance()
-    optimized_brazil_indicators()'''
+    optimized_brazil_indicators()
 
-    '''check_exchange_rate()
+    # DAG de verificação
+    check_exchange_rate()
     check_credit_balance()
-    check_brazil_indicators()'''
+    check_brazil_indicators()
 
+    # DAG de carregamento para o banco de dados
     upsert()
-    
+
 if __name__ == "__main__":
     main()
