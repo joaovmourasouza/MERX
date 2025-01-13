@@ -1,14 +1,15 @@
 import psycopg2
 import time
 
-def create_tables():
-    conn = psycopg2.connect(
+conn = psycopg2.connect(
         dbname="mydb", 
         user="user", 
         password="password", 
         host="db", 
         port="5432"
     )
+
+def create_tables():
     cur = conn.cursor()
 
     create_brl_exchange_rate = '''
@@ -34,14 +35,14 @@ def create_tables():
 
     create_credit_balance_cooperatives = '''
     CREATE TABLE public.credit_balance_cooperatives (
-        Data DATE NOT NULL,
+        Data DATE NOT NULL PRIMARY KEY,
         Valor NUMERIC(15, 4) NOT NULL
     );
     '''
 
     create_credit_balance_direct_resources = '''
     CREATE TABLE public.credit_balance_direct_resources (
-        Data DATE NOT NULL,
+        Data DATE NOT NULL PRIMARY KEY,
         Valor NUMERIC(15, 4) NOT NULL
     );
     '''

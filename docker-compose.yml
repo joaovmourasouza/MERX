@@ -3,8 +3,8 @@ version: '3.8'
 services:
   db:
     build:
-      context: .  # Contexto de build para o diretório /home/jvms/MERX
-      dockerfile: ./src/db/Dockerfile  # Caminho para o Dockerfile do PostgreSQL
+      context: .
+      dockerfile: ./src/db/Dockerfile
     container_name: postgres-db
     environment:
       POSTGRES_USER: user
@@ -19,8 +19,8 @@ services:
 
   python-scripts:
     build:
-      context: .  # Contexto de build para o diretório /home/jvms/MERX
-      dockerfile: ./src/python/Dockerfile  # Caminho para o Dockerfile do script Python
+      context: .
+      dockerfile: ./src/python/Dockerfile
     container_name: python-scripts
     depends_on:
       - db
