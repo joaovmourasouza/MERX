@@ -1,3 +1,10 @@
+import os
+
+os.makedirs('./logs', exist_ok=True)
+os.makedirs('./data/bronze', exist_ok=True)
+os.makedirs('./data/silver', exist_ok=True)
+os.makedirs('./data/gold', exist_ok=True)
+
 from src.extract.api import (get_exchange_rate, 
                              get_credit_balance_cooperatives, 
                              get_credit_balance_with_direct_resources)
@@ -19,6 +26,7 @@ from src.load.check import (check_exchange_rate,
 from src.load.insert import upsert
 
 def main() -> None:
+
     # DAG de extração
     get_exchange_rate("USD")
     get_exchange_rate("BRL")
